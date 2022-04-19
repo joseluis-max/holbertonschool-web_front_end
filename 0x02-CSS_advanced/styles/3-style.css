@@ -12,11 +12,11 @@ html {
 }
 
 body{
-    background-color: var(--text-color);
+    color: var(--text-color);
 }
 
 a{
-    background-color: var(--text-color);
+    color: var(--text-color);
 }
 
 .visually-hidden{
@@ -24,9 +24,9 @@ a{
 }
 
 .card-category{
-    background-color: var(--color-primary);
+    color: var(--color-primary);
 }
 
 .section-tagline{
-    background-color: var(--color-primary);
+    color: var(--color-primary);
 }

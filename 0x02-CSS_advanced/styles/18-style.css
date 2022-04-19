@@ -50,7 +50,7 @@ html {
 }
 
 body{
-    background-color: var(--text-color);
+    color: var(--text-color);
     font-family: var(--font-family-base);
     font-size: var(--font-size-medium);
     font-weight: var(--font-weight-regular);
@@ -63,7 +63,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a[href]{
-    background-color: var(--text-color);
+    color: var(--text-color);
     text-decoration: none;
 }
 
@@ -105,7 +105,7 @@ a[href]:active{
 }
 
 .nav .nav-link:hover {
-    background-color: var(--nav-item-link-hover);
+    color: var(--nav-item-link-hover);
 }
 
 .visually-hidden{
@@ -113,7 +113,7 @@ a[href]:active{
 }
 
 .card-category{
-    background-color: var(--color-primary);
+    color: var(--color-primary);
 }
 
 .section-title{
@@ -125,7 +125,7 @@ a[href]:active{
 }
 
 .section-tagline{
-    background-color: var(--color-primary);
+    color: var(--color-primary);
     font-family: var(--font-family-title);
     text-transform: var(--section-tagline-transform);
     font-weight: var(--font-weight-bold);
