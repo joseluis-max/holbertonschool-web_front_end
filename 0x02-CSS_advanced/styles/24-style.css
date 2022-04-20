@@ -103,7 +103,7 @@ ul.row::after{
     padding: 0.5rem;
 }
 
-.card-title, .card-services{
+.card-services .card-title{
     margin: 0;
 }
 
