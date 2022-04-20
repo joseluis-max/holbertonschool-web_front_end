@@ -88,7 +88,7 @@ ul.row{
 
 ul.row::after{
     content: "";
-    display: table-row;
+    display: table;
     clear: both;
 }
 
