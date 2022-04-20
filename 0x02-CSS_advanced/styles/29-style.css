@@ -220,7 +220,7 @@ ul.row::after{
 }
 
 .nav .nav-link::before{
-    content: "empty";
+    content: "";
     position: absolute;
     top: 0;
     right: 0;
