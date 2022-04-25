@@ -1,50 +1,67 @@
 /* cloning a design in css*/
+body {
+    display: flex;
+    justify-content: center;
+    height: 50vh;
+    align-items: center;
+
+}
 .container {
     display: flex;
+    align-items: center;
     width: 70%;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 100px;
+    height: 50vh;
 }
 
 .box {
-    width: 20%;
-    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
+    align-content: center;
     color: white;
-    font-size: 2.5rem;
 }
 
 .box1 {
-    background-color: yellow;
+    width: 140px;
+    height: 120px;
+    background-color: brown;
+    font-size: 1.5rem;
 }
 
 .box2 {
     background-color: blue;
-    transform: scale(1.2);
-    justify-content: left;
-    padding-left: 10px;
     z-index: 1;
+    width: 180px;
+    height: 150px;
+    position: relative;
+    top: -6px;
+    font-size: 2rem;
 }
 
 .box3 {
     background-color: red;
-    transform: scale(1.5);
     height: 110px;
-    margin-top: -15px;
-    z-index: 2;   
+    z-index: 2;
+    width: 240px;
+    height: 190px;
+    position: relative;
+    top: -15px;
+    font-size: 3rem;
 }
 
 .box4 {
     background-color: purple;
-    transform: scale(1.2);
-    justify-content: right;
-    padding-right: 10px;
-    z-index: 1;   
+    z-index: 1;
+    width: 180px;
+    height: 150px;
+    position: relative;
+    top: -6px;
+    font-size: 2rem;
 }
 
 .box5 {
     background-color: cyan;
+    width: 140px;
+    height: 120px;
+    font-size: 1.5rem;
 }
