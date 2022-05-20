@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
-let globalVariable = "Welcome";
+const globalVariable = 'Welcome';
 
-function outer() {
+function outer () {
   alert(globalVariable);
-  let course = "Holberton";
+  const course = 'Holberton';
   function inner () {
     alert(`${globalVariable} ${course}`);
-    let exclamation = "!";
+    const exclamation = '!';
     function inception () {
       alert(`${globalVariable} ${course} ${exclamation}`);
     }
