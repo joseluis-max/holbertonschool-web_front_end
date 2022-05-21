@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 
-
+/**
+ * createClassRoom - closure number of students with loop
+ * @param {Number} numbersOfStudents 
+ * @returns 
+ */
 function createClassRoom (numbersOfStudents) {
   function studentSeat (seat) {
     return () => seat; 
