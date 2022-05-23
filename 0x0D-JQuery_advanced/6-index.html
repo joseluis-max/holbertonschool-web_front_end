@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>Task 0</title>
+
+</head>
+
+<body>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <script type="application/javascript">
+        function createForm () {
+            $(document).ready(function () {
+                const input = $("<input type='text'/>");
+                const input1 = $("<input type='text'/>");
+                const select = $(`<select>
+                        <option value="before" default>Before</option>
+                        <option value="after" default> After</option
+                    </select>`);
+                const button = $("<input type='submit'/>").click(function () {
+                    const first = $("input").first().val();
+                    const last = $("input:nth-of-type(2)").val();
+                    const position = $("select").val(); 
+                    addNewMember(first, last, position);
+                });
+                $("body").prepend(input, input1, select, button);
+            });
+        }
+        function addNewMember(firstName, lastName, position) {
+            $(document).ready(function () {
+                if (jQuery) {
+                    const button = $("<td></td>").text("(x)").css("background-color", "orange").click(function () {
+                        $(this).parent().remove();
+                    });
+                    const row = $("<tr></tr>").append(`<td>${firstName}</td>`, `<td>${lastName}</td>`, button);
+                    if (position == "before") {
+                        $("tbody").prepend(row);
+                    } else {
+                        $("tbody").append(row);
+                    }
+                }
+            });
+        }
+        function createFamilyTree() {
+            $(document).ready(function () {
+                if (jQuery) {
+                    const firstName = $("<th></th>").text("FirstName");
+                    const lastName = $("<th></th>").text("LastName");
+                    const header = $("<tr></tr>").append(firstName, lastName);
+                    $("body").append("<table></table>");
+                    $("table").append("<thead></thead>");
+                    $("thead").append(header);
+                    $("table").append("<tbody></tbody>");
+                }
+            })
+        }
+        createFamilyTree();
+        createForm();
+    </script>
+</body>
+
+</html>

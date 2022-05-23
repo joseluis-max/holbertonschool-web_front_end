@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>Task 0</title>
+
+</head>
+
+<body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="application/javascript">
+        function listPosts () {
+            $.get("localhost:5000/posts", function (data, status) {
+                if (status == 200) {
+                    data.forEach(element => {
+                        addPostRow(element);
+                    });
+                } else {
+                    alert("Server Error");
+                }
+            });
+        }
+        function addPostRow (data) {
+            $(document).ready(function () {
+                if (jQuery) {
+                    $("body").append(`<p>
+                            <span>
+                                Post created with id ${data.id}, title: ${data.title}, author: ${data.author}
+                            </span>
+                        </p>`);
+                }
+            });
+        }
+        listPosts();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>Task 0</title>
+    <style>
+        .loading {
+            opacity: 0.2;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="application/javascript">
+        function displayLoading (loading) {
+            $(document).ready(
+                function () {
+                    if (jQuery) {
+                        if (loading) {
+                            $("ul:first").wrap("<div class='loading'></div>");
+                        } else {
+                            $("ul:first").unwrap();
+                        }
+                    }
+                }
+            )
+        }
+        function buildPagination(numberOfItems, itemsPerPage, currentOffset) {
+            $(document).ready(function () {
+                if (jQuery) {
+                    $("ul#pagination").empty();
+                    const pagination = Math.ceil(numberOfItems / itemsPerPage);
+                    for (let i = 0; i <= pagination; i++) {
+                        let li = $("<li></li>").css("cursor", "pointer")
+                            .css("margin-left", "10px")
+                            .css("display", "inline-block")
+                            .text(`${i}`)
+                            .css("list-style", "none").click(
+                                function (ev) {
+                                    queryWikipedia($("input").first().val(), ev.target.innerText);
+                                }
+                            );
+                        if (i == currentOffset) {
+                            li.css("font-weight", "bold");
+                        }
+                        $("ul#pagination").append(li);
+                    }
+                }
+            });
+        }
+        function queryWikipedia(search, offset = 0) {
+            $(document).ready(function () {
+                if (jQuery) {
+                    let url = "https://en.wikipedia.org/w/api.php";
+                    const params = {
+                        action: "query",
+                        list: "search",
+                        srsearch: search,
+                        format: "json",
+                        sroffset: offset
+                    }
+                    url = url + "?origin=*";
+                    Object.keys(params).forEach(function (key) { url += "&" + key + "=" + params[key]; });
+                    displayLoading(true);
+                    $.ajax({
+                        method: "GET",
+                        url: url,
+                    }).done(function (json) {
+                        displayLoading(false);
+                        $("ul:first").empty();
+                        json.query.search.forEach(function (search) {
+                            addNewArticle(search.pageid, search.title, search.snippet);
+                        });
+                        buildPagination(json.query.searchinfo.totalhits, 10, offset);
+                    });
+                }
+            })
+        }
+        function addNewArticle(id, title, snippet) {
+            const article = $(`<li>
+                    <p>
+                        <span>${id} -</span>
+                        <b>${title}</b>
+                    </p>
+                    <p>
+                        ${snippet}
+                    </p>
+                </li>`);
+            $("ul:first").append(article);
+        }
+        function createSearchForm() {
+            $(document).ready(function () {
+                if (jQuery) {
+                    const submit = $("<input type='submit' />").click(function (ev) {
+                        queryWikipedia($("input").first().val());
+                    });
+                    $("body").append("<input type='text' />", submit, "<ul></ul>", "<ul id='pagination'></ul>");
+                }
+            });
+        }
+        $(document).ready(function (e) {
+            createSearchForm();
+        });
+    </script>
+</body>
+
+</html>

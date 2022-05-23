@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>Task 0</title>
+
+</head>
+
+<body>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="application/javascript">
+        function queryWikipedia (search) {
+            $(document).ready(function () {
+                if (jQuery) {
+                    let url = "https://en.wikipedia.org/w/api.php";
+                    const params = {
+                        action: "query",
+                        list: "search",
+                        srsearch: search,
+                        format: "json"
+                    }
+                    url = url + "?origin=*";
+                    Object.keys(params).forEach(function (key) { url += "&" + key + "=" + params[key]; });
+                    $.ajax({
+                        method: "GET",
+                        url: url,
+                    }).done(function (json) {
+                        console.log(json.query.search);
+                        json.query.search.forEach(function (search){
+                            addNewArticle(search.pageid, search.title, search.snippet);
+                        })
+                    })
+                }
+            })
+        }
+        function addNewArticle (id, title, snippet) {
+            const article = $(`<li>
+                    <p>
+                        <span>${id} -</span>
+                        <b>${title}</b>
+                    </p>
+                    <p>
+                        ${snippet}
+                    </p>
+                </li>`);
+            $("ul").append(article);
+        }
+        function createSearchForm () {
+           $(document).ready(function () {
+                if (jQuery) {
+                    const submit = $("<input type='submit' />").click(function (ev) {
+                        queryWikipedia($("input").first().val());
+                    });
+                    $("body").append("<input type='text' />", submit, "<ul></ul>");
+                }
+           });
+       }
+       $(document).ready(function (e) {
+           createSearchForm();
+       });
+    </script>
+</body>
+
+</html>
