@@ -50,7 +50,11 @@
             cookies = cookies.split("; ");
             cookies = cookies.map(cookie => cookie.split("="));
             cookies = Object.assign(...cookies.map(c => ({[c[0]]: c[1]})));
-            return cookies[name];
+            if (cookies[name]){
+                return cookies[name];
+            } else {
+                return ""
+            }
         }
     </script>
 </body>
