@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            background-color: white;
+            padding: 5px 15px;
+            border: 1px solid gray;
+            border-radius: 5px;
+        }
+
+        input {
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Login to the website</h1>
+    <input type="text" id="firstname" placeholder="Firstname">
+    <input type="text" id="email" placeholder="Email">
+    <button onclick="setCookies()">Log me in</button>
+    <br />
+    <h1>Cookies</h1>
+    <button onclick="showCookies()">Show the cookies</button>
+    <script>
+        function setCookies() {
+            const firstname = document.getElementById('firstname').value;
+            const email = document.getElementById('email').value;
+            let date = new Date().getTime();
+            date = new Date(date + (1000 * 60 * 60 * 24 * 10));
+            document.cookie = `firstname=${firstname}; expires=${date}`;
+            document.cookie = `email=${email}; expires=${date}`;
+        }
+
+        function showCookies() {
+            const p = document.createElement('p');
+            p.innerHTML = `Email: ${getCookie("email")} - Firstname: ${getCookie("firstname")}`;
+            document.body.appendChild(p);
+            getCookie("firstname");
+        }
+
+        function getCookie (name) {
+            let cookies = document.cookie;
+            cookies = cookies.split("; ");
+            cookies = cookies.map(cookie => cookie.split("="));
+            cookies = Object.assign(...cookies.map(c => ({[c[0]]: c[1]})));
+            return cookies[name];
+        }
+    </script>
+</body>
+
+</html>
